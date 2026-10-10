@@ -21,11 +21,7 @@ GA3 README template.
 
 ### 2: Initialize a Git repository, and commit the README and `.gitignore`
 
-<!-- No command/output needed here -- we check the repo directly. -->
-
 ### 3: Commit throughout the assignment
-
-<!-- No command/output needed here -- we check your commit history directly. -->
 
 ------------------------------------------------------------------------
 
@@ -33,15 +29,13 @@ GA3 README template.
 
 ### 4: Predict the output of `echo.sh`
 
-<!-- No need to paste the script: we'll look at scripts/echo.sh directly. -->
+*Answer* (prediction and reasoning for `bash scripts/echo.sh Oct07 Oct08`): I predict the output will be Oct07 Oct08 but stops at $n3 (unbound variable) because there are only two arguments given.
 
-*Answer* (prediction and reasoning for `bash scripts/echo.sh Oct07 Oct08`):
+*Answer* (prediction and reasoning for `bash scripts/echo.sh Oct07 Oct08 Oct09 Oct10`): I predict the output will be Oct07 Oct08 Oct09. Because a fourth argument is given but not specified in the script ($n), it does not print Oct10.
 
-*Answer* (prediction and reasoning for `bash scripts/echo.sh Oct07 Oct08 Oct09 Oct10`):
+*Answer* (prediction and reasoning for `bash scripts/echo.sh Oct07 Oct08 "Oct09 Oct10"`): I predict the output will be Oct07 Oct08 Oct09 Oct10 because using the quotation marks means it is passed as a single argument.
 
-*Answer* (prediction and reasoning for `bash scripts/echo.sh Oct07 Oct08 "Oct09 Oct10"`):
-
-*Answer* (prediction and reasoning for `bash scripts/echo.sh results/fastqc/*.html`):
+*Answer* (prediction and reasoning for `bash scripts/echo.sh results/fastqc/*.html`): I predict the output will be listing files from the results/fastqc that end with .html (wildcard). 
 
 ### 5: Run `echo.sh` and compare with your predictions
 
@@ -51,7 +45,10 @@ bash scripts/echo.sh Oct07 Oct08
 
 The output of the command was:
 
-```         
+```  
+Oct07
+Oct08
+scripts/echo.sh: line 6: $3: unbound variable       
 ```
 
 ```bash
@@ -60,7 +57,11 @@ bash scripts/echo.sh Oct07 Oct08 Oct09 Oct10
 
 The output of the command was:
 
-```         
+```  
+Oct07
+Oct08
+Oct09
+Finished      
 ```
 
 ```bash
@@ -69,7 +70,11 @@ bash scripts/echo.sh Oct07 Oct08 "Oct09 Oct10"
 
 The output of the command was:
 
-```         
+```   
+Oct07
+Oct08
+Oct09 Oct10
+Finished      
 ```
 
 ```bash
@@ -78,37 +83,50 @@ bash scripts/echo.sh results/fastqc/*.html
 
 The output of the command was:
 
-```         
+```    
+results/fastqc/S63_R1_fastqc.html
+results/fastqc/S63_R2_fastqc.html
+results/fastqc/S64_R1_fastqc.html
+Finished    
 ```
 
-*Answer*: Which output (if any) differed from your prediction, and why?
+*Answer*: Which output (if any) differed from your prediction, and why? 
+
+I forgot that there was also an "echo Finished" so my prediction didn't include printing that at the end. Also, for the last one, I didn't realize that it would only print 3 of the dozens of fastqc .html files because only three arguments can be accepted in the script.
 
 ### 6: Write the `printline.sh` script
-
-<!-- No need to paste the script: we'll look at scripts/printline.sh directly. -->
 
 ### 7: Test `printline.sh` twice
 
 Test 1:
 
 ```bash
-# Your command:
+# Your command: 
+bash scripts/printline.sh data/metadata.tsv 2
 ```
 
 The output of the command was:
 
-```         
+```
+S82     10dpi   cathemerium         
 ```
 
 Test 2 (with redirection), and checking the contents of the output file:
 
 ```bash
 # Your command:
+
+# Redirect script's output to appropriately named file in results
+bash scripts/printline.sh data/metadata.tsv 14 > results/printlinetest.txt 
+
+# Check contents of printlines.sh results file
+cat results/printlinetest.txt
 ```
 
 The output of the command that checks the file contents was:
 
-```         
+```  
+S64     24hpi   cathemerium    
 ```
 
 ------------------------------------------------------------------------

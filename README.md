@@ -135,7 +135,7 @@ S64     24hpi   cathemerium
 
 ### 8: Get a MultiQC container link
 
-*Answer*: The container link (URI) is:
+*Answer*: The container link (URI) is: oras://community.wave.seqera.io/library/multiqc:1.35--562c547b518ebe20
 
 ### 9: MultiQC's help info, and the MultiQC command
 
@@ -143,19 +143,17 @@ Code to run `multiqc --help` with the container:
 
 ```bash
 # Your command:
+apptainer exec oras://community.wave.seqera.io/library/multiqc:1.35--562c547b518ebe20 multiqc --help
 ```
-
-<!-- You don't need to paste the MultiQC help output -->
 
 The MultiQC command to run MultiQC on `results/fastqc` with output in `results/multiqc`:
 
 ```bash
 # Your command:
+apptainer exec oras://community.wave.seqera.io/library/multiqc:1.35--562c547b518ebe20 multiqc -o results/multiqc results/fastqc/
 ```
 
 ### 10: Write the `multiqc.sh` script
-
-<!-- No need to paste the script: we'll look at scripts/multiqc.sh directly. -->
 
 ### 11: Run `multiqc.sh`
 
@@ -163,29 +161,25 @@ Code to run the script:
 
 ```bash
 # Your command:
+bash scripts/multiqc.sh
 ```
 
-<!-- You don't need to paste the MultiQC logging output -->
+*Answer*: Number of FastQC reports MultiQC found: 44
 
-*Answer*: Number of FastQC reports MultiQC found:
-
-*Answer*: Does that match what you expected? Why/why not?
+*Answer*: Does that match what you expected? Why/why not? Yes, that is the number of samples we have.
 
 ### 12: Make `multiqc.sh` accept arguments, and rerun it
-
-<!-- No need to paste the script: we'll look at scripts/multiqc.sh and its Git history directly. -->
 
 Code to rerun the script:
 
 ```bash
 # Your command:
+bash scripts/multiqc.sh results/multiqc/ results/fastqc/
 ```
-
-<!-- No need to paste any output -->
 
 ### 13: Differences between the two MultiQC runs
 
-*Answer*:
+*Answer*: I noticed that the initial output was the same (path to input, searching progress bar, number of reports found etc.) but after that it noted that the results would be written with a suffix (_1) because we have already performed the command once before. That is, it does not automatically overwrite the output unless you specify it to (have to use --force option to overwrite the original files). 
 
 ------------------------------------------------------------------------
 

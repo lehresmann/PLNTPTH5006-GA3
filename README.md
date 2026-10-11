@@ -29,7 +29,7 @@ GA3 README template.
 
 ### 4: Predict the output of `echo.sh`
 
-*Answer* (prediction and reasoning for `bash scripts/echo.sh Oct07 Oct08`): I predict the output will be Oct07 Oct08 but stops at $n3 (unbound variable) because there are only two arguments given.
+*Answer* (prediction and reasoning for `bash scripts/echo.sh Oct07 Oct08`): I predict the output will be Oct07 Oct08 but stops at $3 (unbound variable) because there are only two arguments given.
 
 *Answer* (prediction and reasoning for `bash scripts/echo.sh Oct07 Oct08 Oct09 Oct10`): I predict the output will be Oct07 Oct08 Oct09. Because a fourth argument is given but not specified in the script ($n), it does not print Oct10.
 
@@ -143,14 +143,16 @@ Code to run `multiqc --help` with the container:
 
 ```bash
 # Your command:
-apptainer exec oras://community.wave.seqera.io/library/multiqc:1.35--562c547b518ebe20 multiqc --help
+apptainer exec oras://community.wave.seqera.io/library/multiqc:1.35--562c547b518ebe20 \ 
+  multiqc --help
 ```
 
 The MultiQC command to run MultiQC on `results/fastqc` with output in `results/multiqc`:
 
 ```bash
 # Your command:
-apptainer exec oras://community.wave.seqera.io/library/multiqc:1.35--562c547b518ebe20 multiqc -o results/multiqc results/fastqc/
+apptainer exec oras://community.wave.seqera.io/library/multiqc:1.35--562c547b518ebe20 \
+  multiqc -o results/multiqc results/fastqc/
 ```
 
 ### 10: Write the `multiqc.sh` script
@@ -187,9 +189,9 @@ bash scripts/multiqc.sh results/multiqc/ results/fastqc/
 
 ### 14: The structure of the Pandoc command
 
-*Answer* (options and arguments, and what each does):
+*Answer* (options and arguments, and what each does): The option -o is the output file. After that, the command specifies the input markdown file to use to render. 
 
-*Answer* (how does Pandoc know which output format to produce?):
+*Answer* (how does Pandoc know which output format to produce?): Because of the extension .pdf.
 
 ### 15: Render your README to PDF and HTML
 
@@ -201,15 +203,16 @@ pandoc -o README.pdf README.md
 
 ```bash
 # Your command:
+pandoc -o README.html README.md
 ```
 
 ### 16: Should the rendered files be committed?
 
-*Answer*: Should the rendered files be committed to your Git repo? Why/why not?
+*Answer*: Should the rendered files be committed to your Git repo? Why/why not? No, because these are files derived from a manually editable file. You should commit the README.md not any potential files that can be produced from it. One reason is because .pdf or .html (derived files) can be re-generated at any time using the original README.md and saving too many derived files can lead to unnecessary accumulation of files in the repository. 
 
 ### 17: Install the PDF Viewer extension and view the PDF
 
-*Answer*: One observation about the rendered PDF file:
+*Answer*: One observation about the rendered PDF file: It seems important to not exceed a certain line length if you want the pdf-rendered information to be accurate. Specifically, the long link to the MultiQC container meant the subsequent line of code was cut off on my first rendering of the pdf rendering because I did not break the line (\) in the code. The pdf is apparently restricted to normal printing page width. 
 
 ## Part E: Publish your repo on GitHub
 

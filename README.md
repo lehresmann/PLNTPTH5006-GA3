@@ -1,16 +1,3 @@
-<!--
-GA3 README template.
-- Add your answers to each question's section below.
-- For each question where we want you to add your commands,
-  put the command(s) you ran in the terminal in the corresponding ```bash code block.
-- Where we want to see a command's output, there is a plain ``` code block
-  right below the command block: paste the output there.
-- You don't need to paste the contents of your scripts into this file:
-  we will look at the scripts in your `scripts` dir directly
-  (so make sure you commit them!).
-- Delete instructional comments like this one as you go.
--->
-
 # GA3 answers - Lillian Ehresmann
 
 ------------------------------------------------------------------------
@@ -218,15 +205,9 @@ pandoc -o README.html README.md
 
 ### 18: Create a GitHub repository
 
-<!-- No command/output needed here -- we check your GitHub repo directly. -->
-
 ### 19: Connect your local repo to GitHub, and push
 
-<!-- No command/output needed here -- we check your GitHub repo directly. -->
-
 ### 20: Create an Issue to tag the instructors
-
-<!-- No command/output needed here -- we check your GitHub repo directly. -->
 
 ------------------------------------------------------------------------
 
